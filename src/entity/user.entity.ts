@@ -80,7 +80,7 @@ export class UserModel {
 
     @OneToOne(() => ProfileModel, (profile) => profile.user, {
         // find() 실행 할때마다 항상 같이 가져올 relation
-        eager: true,
+        eager: false,
         // 저장할때 relaion을 한번에 저장가능
         cascade: true,
         // null 가능여부
@@ -98,4 +98,9 @@ export class UserModel {
 
     @OneToMany(() => PostModel, (post) => post.author)
     posts: PostModel[];
+
+    @Column({
+        default: 0,
+    })
+    count: number;
 }
